@@ -69,3 +69,45 @@ WHERE favorite_color IN ('orange', 'green', 'blue');
 -- 14
 SELECT * FROM person
 WHERE favorite_color IN ('yellow', 'purple');
+
+-- Table - orders
+
+-- 1
+CREATE TABLE orders (
+  order_id SERIAL PRIMARY KEY,
+  person_id VARCHAR(250),
+  product_name VARCHAR(250),
+  product_price INT,
+  product_quantity INT
+);
+
+-- 2
+INSERT INTO orders (person_id, product_name, product_price, quantity)
+VALUES ('michael', 'ice cream', 5, 3);
+INSERT INTO orders (person_id, product_name, product_price, quantity)
+VALUES ('michael', 'fake-mustache', 2, 1);
+INSERT INTO orders (person_id, product_name, product_price, quantity)
+VALUES ('jim', 'sandwich', 2, 1);
+INSERT INTO orders (person_id, product_name, product_price, quantity)
+VALUES ('dwight', 'beets', 1, 100);
+INSERT INTO orders (person_id, product_name, product_price, quantity)
+VALUES ('dwight', 'wizard', 300, 1);
+
+-- 3
+SELECT * FROM orders;
+
+-- 4
+SELECT SUM(quantity)
+FROM orders;
+
+-- 5
+SELECT SUM(product_price * quantity)
+FROM orders;
+
+-- 6
+SELECT SUM(product_price * quantity)
+FROM orders
+WHERE person_id = 1;
+
+-- Table - artist
+
